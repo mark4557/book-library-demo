@@ -19,9 +19,9 @@ const insertBook = (bookName, author, callback) => {
     let sql = `insert into book(book_id, book_name, author, borrowed) values (?, ?, ?, ?)`;
     db.run(sql, [null, bookName, author, "N"], function (err) {
         if (err)
-            callback(0, err);
+            callback(err, 0);
         else
-            callback(this.lastID, null);    
+            callback(null, this.lastID);    
     });
 }
 
@@ -32,9 +32,9 @@ const updateBook = (bookId, bookName, author, borrowed, callback) => {
         if (err)
             console.log(err.message);
         if (err)
-            callback(0, err);
+            callback(err, 0);
         else
-            callback(this.changes, null);
+            callback(null, this.changes);
     });
 }
 
@@ -42,9 +42,9 @@ const deleteBook = (bookId, callback) => {
     let sql = `delete from book where book_id = ?`;
     db.run(sql, [bookId], function (err) {
         if (err)
-            callback(0, err);
+            callback(err, 0);
         else
-            callback(this.changes, null);
+            callback(null, this.changes);
     });
 }
 

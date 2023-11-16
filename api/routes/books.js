@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var db = require('../config/store');
 var service = require('../services/book-service');
 
 /* GET book details. */
@@ -24,7 +23,7 @@ router.get('/:bookId', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    service.insertBook(req.body.book_name, req.body.author, (result ,err) => {
+    service.insertBook(req.body.book_name, req.body.author, (err, result) => {
         if (err)
             console.log(err.message);
         res.send({'book_id': result});
@@ -32,7 +31,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-    service.updateBook(req.body.book_id, req.body.book_name, req.body.author, req.body.borrowed, (result, err) => {
+    service.updateBook(req.body.book_id, req.body.book_name, req.body.author, req.body.borrowed, (err, result) => {
         if (err)
             console.log(err.message);
         res.send({'count': result});
@@ -40,7 +39,7 @@ router.put('/', function(req, res, next) {
 });
 
 router.put('/:bookId', (req, res) => {
-    service.updateBook(req.params.bookId, req.body.book_name, req.body.author, req.body.borrowed, (result, err) => {
+    service.updateBook(req.params.bookId, req.body.book_name, req.body.author, req.body.borrowed, (err, result) => {
         if (err)
             console.log(err.message);
             res.send({'count': result});
@@ -48,7 +47,7 @@ router.put('/:bookId', (req, res) => {
 });
 
 router.delete('/:bookId', function(req, res, next) {
-    service.deleteBook(req.params.bookId, (result, err) => {
+    service.deleteBook(req.params.bookId, (err, result) => {
         if (err)
             console.log(err.message);
             res.send({'count': result});
