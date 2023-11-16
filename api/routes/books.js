@@ -27,7 +27,7 @@ router.post('/', function(req, res, next) {
     service.insertBook(req.body.book_name, req.body.author, (result ,err) => {
         if (err)
             console.log(err.message);
-        res.send(`Inserted: ${result}\n`);
+        res.send({'book_id': result});
     });
 });
 
@@ -35,7 +35,7 @@ router.put('/', function(req, res, next) {
     service.updateBook(req.body.book_id, req.body.book_name, req.body.author, req.body.borrowed, (result, err) => {
         if (err)
             console.log(err.message);
-        res.send(`Rows updated: ${result}\n`);
+        res.send({'count': result});
     });
 });
 
@@ -43,16 +43,16 @@ router.put('/:bookId', (req, res) => {
     service.updateBook(req.params.bookId, req.body.book_name, req.body.author, req.body.borrowed, (result, err) => {
         if (err)
             console.log(err.message);
-        res.send(`Rows updated: ${result}\n`);
-    });
+            res.send({'count': result});
+        });
 });
 
 router.delete('/:bookId', function(req, res, next) {
     service.deleteBook(req.params.bookId, (result, err) => {
         if (err)
             console.log(err.message);
-        res.send(`Rows deleted: ${result}\n`);
-    });
+            res.send({'count': result});
+        });
 });
 
 module.exports = router;

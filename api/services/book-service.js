@@ -21,7 +21,7 @@ const insertBook = (bookName, author, callback) => {
         if (err)
             callback(0, err);
         else
-            callback(this.changes, null);    
+            callback(this.lastID, null);    
     });
 }
 
