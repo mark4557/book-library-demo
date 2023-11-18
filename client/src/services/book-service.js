@@ -1,6 +1,7 @@
+const host = 'http://127.0.0.1:3000';
 
 const listBooks = (callback) => {
-    fetch('http://127.0.0.1:3000/books')
+    fetch(`${host}/books`)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -13,44 +14,77 @@ const listBooks = (callback) => {
 }
 
 const getBook = (bookId, callback) => {
-    // let sql = `select book_id, book_name, author, borrowed from book b
-    //             where book_id = ?`;
-    // db.all(sql, bookId, (err, rows) => {
-    //     callback(err, rows);
-    // });    
+    fetch(`${host}/books/${bookId}`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            callback(null, data);
+        })
+        .catch((err) => {
+            console.log(err.message);
+            callback(err.message, null);
+        });
 }
 
 const insertBook = (bookName, author, callback) => {
-    // let sql = `insert into book(book_id, book_name, author, borrowed) values (?, ?, ?, ?)`;
-    // db.run(sql, [null, bookName, author, "N"], function (err) {
-    //     if (err)
-    //         callback(err, 0);
-    //     else
-    callback('test error', 0);
-    // });
+    fetch(`${host}/books`, {
+        method: 'POST',
+        body: JSON.stringify({
+            book_name: bookName,
+            author: author
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            callback(null, data);
+        })
+        .catch((err) => {
+            console.log(err.message);
+            callback(err.message, 0);
+        });
 }
 
 const updateBook = (bookId, bookName, author, borrowed, callback) => {
-    // let sql = `update book set book_name = ?,  author = ?, borrowed = ?
-    //             where book_id = ?`;
-    // db.run(sql, [bookName, author, borrowed, bookId], function (err) {
-    //     if (err)
-    //         console.log(err.message);
-    //     if (err)
-    //         callback(err, 0);
-    //     else
-    //         callback(null, this.changes);
-    // });
+    fetch(`${host}/books`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            book_id: bookId,
+            book_name: bookName,
+            author: author,
+            borrowed: borrowed
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            callback(null, data);
+        })
+        .catch((err) => {
+            console.log(err.message);
+            callback(err.message, 0);
+        });
 }
 
 const deleteBook = (bookId, callback) => {
-    // let sql = `delete from book where book_id = ?`;
-    // db.run(sql, [bookId], function (err) {
-    //     if (err)
-    //         callback(err, 0);
-    //     else
-    //         callback(null, this.changes);
-    // });
+    fetch(`${host}/books/${bookId}`, {
+        method: 'DELETE'
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            callback(null, data);
+        })
+        .catch((err) => {
+            console.log(err.message);
+            callback(err.message, 0);
+        });
 }
 
 
