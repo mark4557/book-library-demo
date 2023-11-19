@@ -2,7 +2,7 @@
 
 This is a Book Library Catalogue Demonstration based on Node.js and React
 
-## About the app
+## About the demo
 The repository contains two seperate applications.  
 - An API application which utilises the following technologies:
     - Node.js
@@ -23,6 +23,13 @@ The repository contains two seperate applications.
         - /api
         - /client
 3. Make sure you have node.js 20.9.0+ installed.
+
+## Testing the API
+The api utilises Jest and SuperTest for unit testing.  To run these test you can do the following.
+
+1. In your terminal, navigate to the `api` directory.
+2. Type `npm install` to install all dependencies.
+3. Type `npm test` to run the unit tests.
 
 ## Running the API
 1. In your terminal, navigate to the `api` directory.
