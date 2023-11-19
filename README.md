@@ -17,7 +17,7 @@ The repository contains two seperate applications.
 
 ## Deploying the Demo
 1. In a terminal clone the git repository:
-- git clone https://github.com/mark4557/book-library-demo.git
+<pre>git clone https://github.com/mark4557/book-library-demo.git</pre>
 2. This will create the following folder structure:
     - /book-library-demo
         - /api
