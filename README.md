@@ -1,15 +1,16 @@
 # book-library-demo
 
-This is a Book Library Catalogue Demonstration based on NodeJs and ReactJS
+This is a Book Library Catalogue Demonstration based on Node.js and React
+
 ## About the app
 The repository contains two seperate applications.  
 - An API application which utilises the following technologies:
-    - Nodejs
-    - Expressjs
+    - Node.js
+    - Express.js
     - Sqlite3
 
 - A front end application utilising the following technologies:
-    - Nodejs
+    - Node.js
     - React
     - Vite
     - Bootstrap
@@ -21,11 +22,12 @@ The repository contains two seperate applications.
     - /book-library-demo
         - /api
         - /client
+3. Make sure you have node.js 20.9.0+ installed.
 
 ## Running the API
 1. In your terminal, navigate to the `api` directory.
-2. Run `npm install` to install all dependencies.
-3. Run `npm run` to start the app.
+2. Type `npm install` to install all dependencies.
+3. Type `npm run` to start the app.
 4. The following messages should be displayed:
 <pre> 
 > api@0.1.0 start
@@ -36,8 +38,8 @@ Connected to the in-memory SQlite database.
 
 ## Running the Client
 1. In another terminal, navigate to the `client` directory.
-2. Run `npm install` to install all dependencies.
-3. Run `npm run dev` to start the app
+2. Type `npm install` to install all dependencies.
+3. Type `npm run dev` to start the app
 4. The following messages should be displayed:
 <pre>
   VITE v4.5.0  ready in 183 ms
@@ -48,7 +50,7 @@ Connected to the in-memory SQlite database.
 </pre>
 
 ## Using the application
-1. With the two apps running, open your browser ito http://localhost:5173/.
+1. With the two apps running, open your browser to http://localhost:5173/.
 2. If you see a webpage saying `Library Catalogue Demo`, it means the application is working.
 3. You can then add books and the list should update.
 
