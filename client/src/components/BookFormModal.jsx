@@ -20,9 +20,6 @@ function BookFormModal(props) {
   }
 
   const handleSave = () => {
-    //save the values.........show progress.
-    console.log('insertBook');
-
     service.insertBook(inputs.bookName, inputs.author, (err, result) => {
       if (err) {
         console.log(err);

@@ -32,6 +32,16 @@ function App() {
     });
   };
 
+  const updateBook = (bookId, bookName, author, borrowed) => {
+    service.updateBook(bookId, bookName, author, borrowed, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        refreshData();
+      }
+    });
+  };
+
   useEffect(() => {
     refreshData();
   }, []);
@@ -40,7 +50,7 @@ function App() {
   return (
     <>
       <Header />
-      <BookTable books={books} deleteBook={deleteBook} />
+      <BookTable books={books} deleteBook={deleteBook} updateBook={updateBook} />
       <BookFormModal onUpdate={refreshData} />
     </>
   )
