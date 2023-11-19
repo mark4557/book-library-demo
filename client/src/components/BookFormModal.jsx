@@ -8,14 +8,12 @@ import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import service from '../services/book-service'
 
-function BookFormModal({ bookId, bookName, author, borrowed }) {
+function BookFormModal(props) {
   const [show, setShow] = useState(false);
   const [inputs, setInputs] = useState({});
   const [showAlert, setShowAlert] = useState(false);
 
   const handleClose = () => {
-    
-    alert('handleClose');
     setInputs(values => ({ ...values, ['bookName']: '' }))
     setInputs(values => ({ ...values, ['author']: '' }))
     setShow(false);
@@ -32,6 +30,7 @@ function BookFormModal({ bookId, bookName, author, borrowed }) {
       } else {
         setInputs(values => ({ ...values, ['bookName']: '' }))
         setInputs(values => ({ ...values, ['author']: '' }))
+        props.onUpdate();
         setShow(false);
       }
     });
@@ -53,10 +52,10 @@ function BookFormModal({ bookId, bookName, author, borrowed }) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-      <Alert show={showAlert} variant="danger" onClose={() => setShowAlert(false)} dismissible>
-        <Alert.Heading>You got an error!</Alert.Heading>
-        <p>An error occurred.</p>
-      </Alert>
+        <Alert show={showAlert} variant="danger" onClose={() => setShowAlert(false)} dismissible>
+          <Alert.Heading>You got an error!</Alert.Heading>
+          <p>An error occurred.</p>
+        </Alert>
 
         <Modal.Header closeButton>
           <Modal.Title>Add new book</Modal.Title>
@@ -83,7 +82,7 @@ function BookFormModal({ bookId, bookName, author, borrowed }) {
             </Row>
             <Row>
               <Col>
-                <label>Enter your age:</label>
+                <label>Author:</label>
               </Col>
               <Col>
 

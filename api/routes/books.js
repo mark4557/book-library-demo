@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
     service.listBooks((err, rows) => {
         if (err)
             console.log(err.message);
-        console.log(JSON.stringify(rows));
         res.send(rows);
     });
 });
@@ -17,7 +16,6 @@ router.get('/:bookId', function(req, res, next) {
     service.getBook(req.params.bookId, (err, rows) => {
         if (err)
             console.log(err.message);
-        console.log(JSON.stringify(rows));
         res.send(rows);
     });
 });
