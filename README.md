@@ -27,7 +27,7 @@ The repository contains two seperate applications.
 ## Running the API
 1. In your terminal, navigate to the `api` directory.
 2. Type `npm install` to install all dependencies.
-3. Type `npm run` to start the app.
+3. Type `npm start` to start the app.
 4. The following messages should be displayed:
 <pre> 
 > api@0.1.0 start
